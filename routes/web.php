@@ -31,6 +31,9 @@ Route::get('/registration', RegistrationPage::class)->name('registration');
 
 Route::group(['middleware' => ['auth', 'verified' ,'banned']], function () {
     Route::get('/dashboard', DashboardPage::class)->name('dashboard');
+});
+
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/email-verification', EmailVerificationPage::class)->name('email-verification');
 });
 
