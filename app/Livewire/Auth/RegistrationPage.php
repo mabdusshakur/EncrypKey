@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Auth;
 
+use App\Mail\Auth\VerificationMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class RegistrationPage extends Component
@@ -23,7 +25,26 @@ class RegistrationPage extends Component
     public function registration()
     {
         $this->validate();
-        dd($this->name, $this->email, $this->password, $this->password_confirmation);
+
+        $verification_token = sha1(time());
+        $owner_id = substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 10);
+
+        $user = User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => Hash::make($this->password),
+            'verification_token' => $verification_token,
+            'user_id' => $owner_id,
+        ]);
+
+        $mail_data = [
+            'subject' => 'Email Verification',
+            'verification_url' => route('verify-email', ['token' => $verification_token]),
+        ];
+
+        Mail::to($this->email)->send(new VerificationMail($mail_data));
+
+        return redirect()->route('login');
     }
 
     public function render()
