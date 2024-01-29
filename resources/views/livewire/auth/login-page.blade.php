@@ -1,4 +1,4 @@
-<body class="bg-login">
+<div class="bg-register" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%;">
     <div class="container-fluid my-5">
         <div class="row">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5 col-xxl-4 mx-auto">
@@ -94,4 +94,4 @@
             });
         });
     </script>
-</body>
+</div>
