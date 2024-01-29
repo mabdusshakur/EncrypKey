@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->boolean('email_verified')->default(false);
-            $table->string('verification_token')->unique()->nullable();
+            $table->string('verification_token')->unique();
             $table->string('password');
             $table->string('avatar')->default('images/avatars/default.png');
             $table->string('role')->default('user');
