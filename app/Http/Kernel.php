@@ -54,6 +54,7 @@ class Kernel extends HttpKernel
      */
     protected $middlewareAliases = [
         'auth' => \App\Http\Middleware\Authenticate::class,
+        'prevent-auth' => \App\Http\Middleware\PreventAuth::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
@@ -66,5 +67,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\Admin::class,
         'banned' => \App\Http\Middleware\Banned::class,
         'verified' => \App\Http\Middleware\Verified::class,
+        'prevent-verified' => \App\Http\Middleware\PreventVerified::class,
     ];
 }
