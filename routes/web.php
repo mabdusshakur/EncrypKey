@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\VerifyEmail;
 use App\Livewire\Auth\EmailVerificationPage;
 use App\Livewire\Auth\ForgotPasswordPage;
 use App\Livewire\Auth\LoginPage;
@@ -28,10 +29,15 @@ Route::get('/login', LoginPage::class)->name('login');
 Route::get('/registration', RegistrationPage::class)->name('registration');
 
 
-Route::group(['middleware' => ['auth', 'banned']], function () {
+Route::group(['middleware' => ['auth', 'verified' ,'banned']], function () {
     Route::get('/dashboard', DashboardPage::class)->name('dashboard');
+    Route::get('/email-verification', EmailVerificationPage::class)->name('email-verification');
 });
 
 Route::get('/forgot-password', ForgotPasswordPage::class)->name('forgot-password');
 Route::get('/reset-password', ResetPasswordPage::class)->name('reset-password');
-Route::get('/email-verification', EmailVerificationPage::class)->name('email-verification');
+
+Route::get('/verify-email', function () {
+    $token = request()->query('token');
+    return app(VerifyEmail::class)->callAction('verify', ['token' => $token]);
+})->name('verify-email');
