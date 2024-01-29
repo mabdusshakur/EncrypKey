@@ -28,11 +28,17 @@ Route::get('/', function () {
 route::group(['middleware' => ['prevent-auth']], function () {
     Route::get('/login', LoginPage::class)->name('login');
     Route::get('/register', RegistrationPage::class)->name('register');
+    Route::get('/forgot-password', ForgotPasswordPage::class)->name('forgot-password');
+    Route::get('/reset-password', ResetPasswordPage::class)->name('reset-password');
 });
 
 
 Route::group(['middleware' => ['auth', 'verified', 'banned']], function () {
     Route::get('/dashboard', DashboardPage::class)->name('dashboard');
+    Route::get('/logout', function () {
+        auth()->logout();
+        return redirect()->route('login');
+    })->name('logout');
 });
 
 Route::group(['middleware' => ['auth', 'prevent-verified']], function () {
@@ -43,7 +49,4 @@ Route::get('/verify-email', function () {
     $token = request()->query('token');
     return app(VerifyEmail::class)->callAction('verify', ['token' => $token]);
 })->name('verify-email')->middleware('prevent-verified');
-
-Route::get('/forgot-password', ForgotPasswordPage::class)->name('forgot-password');
-Route::get('/reset-password', ResetPasswordPage::class)->name('reset-password');
 
