@@ -25,22 +25,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', LoginPage::class)->name('login');
-Route::get('/registration', RegistrationPage::class)->name('registration');
+route::group(['middleware' => ['prevent-auth']], function () {
+    Route::get('/login', LoginPage::class)->name('login');
+    Route::get('/register', RegistrationPage::class)->name('register');
+});
 
 
-Route::group(['middleware' => ['auth', 'verified' ,'banned']], function () {
+Route::group(['middleware' => ['auth', 'verified', 'banned']], function () {
     Route::get('/dashboard', DashboardPage::class)->name('dashboard');
 });
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'prevent-verified']], function () {
     Route::get('/email-verification', EmailVerificationPage::class)->name('email-verification');
 });
-
-Route::get('/forgot-password', ForgotPasswordPage::class)->name('forgot-password');
-Route::get('/reset-password', ResetPasswordPage::class)->name('reset-password');
 
 Route::get('/verify-email', function () {
     $token = request()->query('token');
     return app(VerifyEmail::class)->callAction('verify', ['token' => $token]);
-})->name('verify-email');
+})->name('verify-email')->middleware('prevent-verified');
+
+Route::get('/forgot-password', ForgotPasswordPage::class)->name('forgot-password');
+Route::get('/reset-password', ResetPasswordPage::class)->name('reset-password');
+
