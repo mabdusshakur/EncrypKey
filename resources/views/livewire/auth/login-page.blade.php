@@ -9,33 +9,39 @@
                         <p class="mb-0">Enter your credentials to login your account</p>
 
                         <div class="form-body my-4">
-                            <form class="row g-3">
+                            <form class="row g-3" wire:submit.prevent="login">
                                 <div class="col-12">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="jhon@example.com">
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                        id="email" placeholder="jhon@example.com"
+                                        wire:model.live.debounce.250ms="email">
                                     @error('email')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
+
                                 <div class="col-12">
                                     <label for="password" class="form-label">Password</label>
                                     <div class="input-group" id="show_hide_password">
-                                        <input type="password" class="form-control border-end-0 @error('password') is-invalid @enderror" id="password" placeholder="Enter Password">
+                                        <input type="password"
+                                            class="form-control border-end-0 @error('password') is-invalid @enderror"
+                                            id="password" placeholder="Enter Password"
+                                            wire:model.live.debounce.250ms="password">
                                         <a href="javascript:;" class="input-group-text bg-transparent">
                                             <i class="bi bi-eye-slash-fill"></i>
                                         </a>
+                                        @error('password')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
-                                    @error('password')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="remember_me_cb">
+                                        <input class="form-check-input" type="checkbox" id="remember_me_cb" wire:model="remember_me">
                                         <label class="form-check-label" for="remember_me_cb">Remember Me</label>
                                     </div>
                                 </div>
