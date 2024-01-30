@@ -41,12 +41,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="remember_me_cb" wire:model="remember_me">
+                                        <input class="form-check-input" type="checkbox" id="remember_me_cb"
+                                            wire:model="remember_me">
                                         <label class="form-check-label" for="remember_me_cb">Remember Me</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6 text-end">
-                                    <a href="">Forgot Password ?</a>
+                                    <a href="{{ route('forgot-password') }}">Forgot Password ?</a>
                                 </div>
                                 <div class="col-12">
                                     <div class="d-grid">
