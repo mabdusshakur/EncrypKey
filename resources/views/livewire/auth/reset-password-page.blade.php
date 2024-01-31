@@ -17,9 +17,6 @@
                                             class="form-control border-end-0 @error('password') is-invalid @enderror"
                                             id="password" placeholder="Enter Password"
                                             wire:model.live.debounce.250ms="password">
-                                        <a href="javascript:;" class="input-group-text bg-transparent">
-                                            <i class="bi bi-eye-slash-fill"></i>
-                                        </a>
                                         @error('password')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
