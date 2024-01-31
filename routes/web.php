@@ -7,6 +7,7 @@ use App\Livewire\Auth\LoginPage;
 use App\Livewire\Auth\RegistrationPage;
 use App\Livewire\Auth\ResetPasswordPage;
 use App\Livewire\DashboardPage;
+use App\Livewire\Profile\ProfilePage;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,8 @@ route::group(['middleware' => ['prevent-auth']], function () {
 
 Route::group(['middleware' => ['auth', 'verified', 'banned']], function () {
     Route::get('/dashboard', DashboardPage::class)->name('dashboard');
+    Route::get('/profile', ProfilePage::class)->name('profile');
+    
     Route::get('/logout', function () {
         auth()->logout();
         return redirect()->route('login');
