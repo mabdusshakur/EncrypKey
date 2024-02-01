@@ -18,7 +18,7 @@ return new class extends Migration
             $table->boolean('email_verified')->default(false);
             $table->string('verification_token')->unique();
             $table->string('password');
-            $table->string('avatar')->default('images/avatars/default.png');
+            $table->string('avatar')->nullable();
             $table->string('role')->default('user');
             $table->boolean('is_banned')->default(false);
             $table->string('ban_reason')->nullable();
