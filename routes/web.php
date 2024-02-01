@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\VerifyEmail;
+use App\Livewire\Application\ApplicationPage;
 use App\Livewire\Auth\EmailVerificationPage;
 use App\Livewire\Auth\ForgotPasswordPage;
 use App\Livewire\Auth\LoginPage;
@@ -37,6 +38,7 @@ route::group(['middleware' => ['prevent-auth']], function () {
 Route::group(['middleware' => ['auth', 'verified', 'banned']], function () {
     Route::get('/dashboard', DashboardPage::class)->name('dashboard');
     Route::get('/profile', ProfilePage::class)->name('profile');
+    Route::get('/applications', ApplicationPage::class)->name('applications');
     
     Route::get('/logout', function () {
         auth()->logout();
