@@ -34,7 +34,7 @@ class RegistrationPage extends Component
             'email' => $this->email,
             'password' => Hash::make($this->password),
             'verification_token' => $verification_token,
-            'user_id' => $owner_id,
+            'owner_id' => $owner_id,
         ]);
 
         $mail_data = [
