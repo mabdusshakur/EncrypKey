@@ -1,5 +1,6 @@
 <div>
-    <form class="row g-3">
+    @include('components.helper.alert')
+    <form class="row g-3" wire:submit.prevent="updateGeneralDetails">
         <div class="col-12">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="jhon"
@@ -22,12 +23,12 @@
             @enderror
         </div>
         <div class="col-12">
-            <label for="email" class="form-label">Owner Id</label>
+            <label for="owner_id" class="form-label">Owner Id</label>
             <div class="input-group">
-                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                    placeholder="jhon@example.com" wire:model.live.debounce.250ms="email" @readonly(true)>
-                <button type="button" class="btn btn-primary px-4">Re-Generate</button>
-                @error('email')
+                <input type="text" class="form-control @error('owner_id') is-invalid @enderror" id="owner_id"
+                    placeholder="jhon@example.com" wire:model.live.debounce.250ms="owner_id" @readonly(true)>
+                <button type="button" class="btn btn-primary px-4" wire:click="generateOwnerId">Re-Generate</button>
+                @error('owner_id')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
