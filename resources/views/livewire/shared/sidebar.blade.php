@@ -9,14 +9,16 @@
             </div>
         </div>
         <div class="sidebar-nav" data-simplebar="true">
-            <!--navigation-->
             <ul class="metismenu" id="sidenav">
-                <a href="javascript:;">
+                <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'bg-secondary' : '' }}">
                     <i class="fa-solid fa-house"></i>
                     <div class="menu-title">Dashboard</div>
                 </a>
+                <a href="{{ route('applications') }}" class="{{ request()->routeIs('applications') ? 'bg-secondary' : '' }}">
+                    <i class="fa-solid fa-box"></i>
+                    <div class="menu-title">Applications</div>
+                </a>
             </ul>
-            <!--end navigation-->
         </div>
     </aside>
 </div>
