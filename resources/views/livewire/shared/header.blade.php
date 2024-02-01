@@ -8,21 +8,20 @@
             <ul class="navbar-nav gap-1 nav-right-links align-items-center">
                 <li class="nav-item dropdown">
                     <a href="javascrpt:;" class="dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">
-                        <img src="{{ asset('assets/images/avatars/default.png') }}" class="rounded-circle p-1 border"
-                            height="50">
+                        <img src="{{ auth()->user()->avatar ? Storage::url(auth()->user()->avatar) : asset('assets/images/avatars/default.png') }}"
+                            class="rounded-circle p-1 border" height="50">
                     </a>
                     <div class="dropdown-menu dropdown-user dropdown-menu-end shadow">
                         <a class="dropdown-item  gap-2 py-2" href="javascript:;">
                             <div class="text-center">
-                                <img src="{{ asset('assets/images/avatars/default.png') }}"
-                                    class="rounded-circle p-1 shadow mb-3" height="90"
-                                    alt="">
+                                <img src="{{ auth()->user()->avatar ? Storage::url(auth()->user()->avatar) : asset('assets/images/avatars/default.png') }}"
+                                    class="rounded-circle p-1 shadow mb-3" height="90" alt="">
                                 {{-- <h5 class="user-name mb-0 fw-bold">{{ auth()->user->name }}</h5> --}}
                             </div>
                         </a>
                         <hr class="dropdown-divider">
                         <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="javascript:;">
-                            <i class="fa-regular fa-circle-user"></i>   
+                            <i class="fa-regular fa-circle-user"></i>
                             Profile
                         </a>
                         <hr class="dropdown-divider">
