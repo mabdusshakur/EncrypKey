@@ -1,3 +1,11 @@
 <div>
-    {{-- If your happiness depends on money, you will never be happy with yourself. --}}
+    <div class="row">
+        <div class="col-12 col-xl-6">
+            <div class="card">
+                <div class="card-body p-4">
+                    @livewire('profile.general-details')
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
