@@ -1,4 +1,5 @@
 <div>
+    @include('components.helper.alert')
     <form class="row g-3" wire:submit.prevent="createApp">
         <div class="col-12">
             <label for="app" class="form-label">Application Name</label>
