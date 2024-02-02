@@ -1,3 +1,5 @@
 <div>
-    {{-- Stop trying to control. --}}
+    <div class="row g-4">
+        @livewire('application.application-card')
+    </div>
 </div>
