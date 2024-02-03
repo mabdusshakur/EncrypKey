@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('secret');
             $table->boolean('is_active')->default(true);
+            $table->integer('license_count')->default(0);
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

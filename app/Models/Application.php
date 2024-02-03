@@ -13,6 +13,7 @@ class Application extends Model
         'name',
         'secret',
         'is_active',
-        'user_id'
+        'user_id',
+        'license_count'
     ];
 }
