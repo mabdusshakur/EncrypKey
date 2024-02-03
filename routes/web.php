@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\VerifyEmail;
 use App\Livewire\Application\ApplicationPage;
+use App\Livewire\Application\ApplicationShow;
 use App\Livewire\Auth\EmailVerificationPage;
 use App\Livewire\Auth\ForgotPasswordPage;
 use App\Livewire\Auth\LoginPage;
@@ -39,7 +40,8 @@ Route::group(['middleware' => ['auth', 'verified', 'banned']], function () {
     Route::get('/dashboard', DashboardPage::class)->name('dashboard');
     Route::get('/profile', ProfilePage::class)->name('profile');
     Route::get('/applications', ApplicationPage::class)->name('applications');
-    
+    Route::get('/application/{application}', ApplicationShow::class)->name('application.show');
+
     Route::get('/logout', function () {
         auth()->logout();
         return redirect()->route('login');
