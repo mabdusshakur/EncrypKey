@@ -5,5 +5,5 @@
         </div>
     </div>
     <hr />
-    @livewire('application.license.license-index')
+    @livewire('application.license.license-index', ['application' => $application], key($application->id))
 </div>
