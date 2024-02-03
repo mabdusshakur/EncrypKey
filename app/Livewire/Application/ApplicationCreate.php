@@ -32,6 +32,7 @@ class ApplicationCreate extends Component
             }
             session()->flash('success', 'Application created successfully');
             $this->reset('name');
+            $this->dispatch('application-created'); 
         } catch (\Throwable $th) {
             session()->flash('error', $th->getMessage());
         }
