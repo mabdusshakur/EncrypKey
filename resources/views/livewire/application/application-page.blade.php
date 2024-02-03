@@ -4,8 +4,12 @@
             @livewire('application.application-create')
         </div>
     </div>
-    <hr/>
+    <hr />
     <div class="row g-4">
-        @livewire('application.application-card')
+        @foreach ($applications as $application)
+            <div class="col-12 col-xl-4 col-md-6">
+                @livewire('application.application-card', ['application' => $application], key($application->id))
+            </div>
+        @endforeach
     </div>
 </div>
