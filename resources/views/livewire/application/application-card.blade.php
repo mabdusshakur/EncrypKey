@@ -15,7 +15,7 @@
             </div>
             <hr>
             <div class="d-flex align-items-center justify-content-center gap-3">
-                <button class="btn btn-primary">Manage</button>
+                <button class="btn btn-primary" wire:click="showApplication">Manage</button>
             </div>
         </div>
     </div>
