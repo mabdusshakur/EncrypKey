@@ -13,9 +13,6 @@
                     <div class="d-flex flex-column gap-2">
                         <h6 class="mb-0">License : 798</h6>
                     </div>
-                    <div class="d-flex flex-column gap-2">
-                        <h6 class="mb-0">Used : 546</h6>
-                    </div>
                 </div>
                 <hr>
                 <div class="d-flex align-items-center justify-content-center gap-3">
