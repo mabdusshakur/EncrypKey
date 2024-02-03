@@ -11,6 +11,7 @@ class License extends Model
 
     protected $fillable = [
         'license_key',
+        'is_used',
         'is_banned',
         'ban_reason',
         'application_id',
