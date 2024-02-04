@@ -16,7 +16,7 @@
                             <div class="text-center">
                                 <img src="{{ auth()->user()->avatar ? Storage::url(auth()->user()->avatar) : asset('assets/images/avatars/default.png') }}"
                                     class="rounded-circle p-1 shadow mb-3" height="90" alt="">
-                                {{-- <h5 class="user-name mb-0 fw-bold">{{ auth()->user->name }}</h5> --}}
+                                <h5 class="user-name mb-0 fw-bold">{{ auth()->user()->name }}</h5>
                             </div>
                         </a>
                         <hr class="dropdown-divider">
