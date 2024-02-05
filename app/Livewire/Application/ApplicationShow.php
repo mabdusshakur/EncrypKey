@@ -11,6 +11,9 @@ class ApplicationShow extends Component
     public function mount($application)
     {
         $this->application = Application::find($application);
+        if(!$this->application) {
+            return redirect()->route('applications');
+        }
         $isUserAuthorized = auth()->user()->id === $this->application->user_id;
         if (!$isUserAuthorized) {
             return redirect()->route('applications');
