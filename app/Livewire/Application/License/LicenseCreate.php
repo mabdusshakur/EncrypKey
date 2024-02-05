@@ -35,10 +35,10 @@ class LicenseCreate extends Component
     {
         try {
             $this->validate();
-            for ($i = 0; $i < $this->license_quantity; $i++) {
-                $lastIndex = strlen($this->license_key);
-                $this->license_key = substr_replace($this->license_key, "-XXXX", $lastIndex, 2);
+            $lastIndex = strlen($this->license_key);
+            $this->license_key = substr_replace($this->license_key, "-XXXX", $lastIndex, 2);
 
+            for ($i = 0; $i < $this->license_quantity; $i++) {
                 $licenseMasked = preg_replace_callback('/X+/', function ($matches) {
                     return strtoupper(bin2hex(random_bytes(strlen($matches[0]))));
                 }, $this->license_key);
