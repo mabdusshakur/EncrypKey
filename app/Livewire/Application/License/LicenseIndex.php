@@ -5,17 +5,13 @@ namespace App\Livewire\Application\License;
 use App\Models\License;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class LicenseIndex extends Component
 {
-    public $licenses;
-    public $application;
+    use WithPagination;
 
-    #[On(['license-created', 'license-deleted', 'license-banned', 'license-unbanned'])]
-    public function mount()
-    {
-        $this->licenses = License::where('application_id', $this->application->id)->get();
-    }
+    public $application;
 
     public function unbanLicense($id)
     {
@@ -55,8 +51,12 @@ class LicenseIndex extends Component
         }
     }
     
+    #[On(['license-created', 'license-deleted', 'license-banned', 'license-unbanned'])]
     public function render()
     {
-        return view('livewire.application.license.license-index');
+        $licenses = License::where('application_id', $this->application->id)->paginate(1);
+        return view('livewire.application.license.license-index',[
+            'licenses' => $licenses
+        ]);
     }
 }

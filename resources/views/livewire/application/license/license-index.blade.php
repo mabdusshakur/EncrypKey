@@ -44,6 +44,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{ $licenses->links() }}
             </div>
         </div>
     </div>
