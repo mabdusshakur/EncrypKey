@@ -16,6 +16,21 @@ class LicenseIndex extends Component
     {
         $this->licenses = License::where('application_id', $this->application->id)->get();
     }
+
+    public function unbanLicense($id)
+    {
+        
+    }
+
+    public function banLicense($id)
+    {
+        
+    }
+
+    public function deleteLicense($id)
+    {
+        
+    }
     public function render()
     {
         return view('livewire.application.license.license-index');

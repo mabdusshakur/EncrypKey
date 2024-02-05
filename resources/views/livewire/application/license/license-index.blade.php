@@ -30,9 +30,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                    <button class="btn btn-sm btn-warning">Ban</button>
-                                    <button class="btn btn-sm btn-success">Unban</button>
+                                    <button class="btn btn-sm btn-danger"  wire:click="deleteLicense({{$license->id}})">Delete</button>
+                                    <button class="btn btn-sm btn-warning" wire:click="banLicense({{$license->id}})">Ban</button>
+                                    <button class="btn btn-sm btn-success" wire:click="unbanLicense({{$license->id}})">Unban</button>
                                 </td>
                             </tr>
                         @endforeach
