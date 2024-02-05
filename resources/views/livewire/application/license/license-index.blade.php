@@ -17,22 +17,28 @@
                     <tbody>
                         @foreach ($licenses as $license)
                             <tr>
-                                <td>{{$license->license_key}}</td>
-                                <td>{{$license->is_used ? 'Used' : 'Un-Used'}}</td>
-                                <td>{{$license->hwid_hash}}</td>
-                                <td>{{$license->ip_address}}</td>
-                                <td>{{$license->mac_address}}</td>
+                                <td>{{ $license->license_key }}</td>
+                                <td>{{ $license->is_used ? 'Used' : 'Un-Used' }}</td>
+                                <td>{{ $license->hwid_hash }}</td>
+                                <td>{{ $license->ip_address }}</td>
+                                <td>{{ $license->mac_address }}</td>
                                 <td>
                                     @if (strtotime($license->expires_at) < time())
                                         Expired
                                     @else
-                                        {{$license->expires_at}}
+                                        {{ $license->expires_at }}
                                     @endif
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn-danger"  wire:click="deleteLicense({{$license->id}})">Delete</button>
-                                    <button class="btn btn-sm btn-warning" wire:click="banLicense({{$license->id}})">Ban</button>
-                                    <button class="btn btn-sm btn-success" wire:click="unbanLicense({{$license->id}})">Unban</button>
+                                    <button class="btn btn-sm btn-danger"
+                                        wire:click="deleteLicense({{ $license->id }})">Delete</button>
+                                    @if ($license->is_banned)
+                                        <button class="btn btn-sm btn-success"
+                                            wire:click="unbanLicense({{ $license->id }})">Unban</button>
+                                    @else
+                                        <button class="btn btn-sm btn-warning"
+                                            wire:click="banLicense({{ $license->id }})">Ban</button>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
