@@ -16,4 +16,9 @@ class Application extends Model
         'user_id',
         'license_count'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
