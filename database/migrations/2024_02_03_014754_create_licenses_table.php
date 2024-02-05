@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('license_key');
             $table->boolean('is_used')->default(false);
-            $table->boolean('is_banned')->default(true);
+            $table->boolean('is_banned')->default(false);
             $table->string('ban_reason')->nullable();
             $table->foreignId('application_id')->references('id')->on('applications')->cascadeOnDelete();
             $table->string('hwid_hash')->nullable();
