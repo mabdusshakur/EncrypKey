@@ -54,7 +54,7 @@ class LicenseIndex extends Component
     #[On(['license-created', 'license-deleted', 'license-banned', 'license-unbanned'])]
     public function render()
     {
-        $licenses = License::where('application_id', $this->application->id)->paginate(1);
+        $licenses = License::where('application_id', $this->application->id)->paginate(10);
         return view('livewire.application.license.license-index',[
             'licenses' => $licenses
         ]);
