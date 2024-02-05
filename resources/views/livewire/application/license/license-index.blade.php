@@ -22,7 +22,13 @@
                                 <td>{{$license->hwid_hash}}</td>
                                 <td>{{$license->ip_address}}</td>
                                 <td>{{$license->mac_address}}</td>
-                                <td>{{$license->expires_at}}</td>
+                                <td>
+                                    @if (strtotime($license->expires_at) < time())
+                                        Expired
+                                    @else
+                                        {{$license->expires_at}}
+                                    @endif
+                                </td>
                                 <td>
                                     <button class="btn btn-sm btn-danger">Delete</button>
                                     <button class="btn btn-sm btn-warning">Ban</button>
