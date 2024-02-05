@@ -27,6 +27,8 @@ class LicenseCreate extends Component
         if ($this->license_quantity < 1) {
             $this->license_quantity = 1;
         }
+        $this->license_key = strtoupper($this->license_key);
+        $this->license_key = preg_replace('/[^A-Za-z0-9-]/', '', $this->license_key);
     }
 
     public function createLicense()
@@ -34,6 +36,7 @@ class LicenseCreate extends Component
         try {
             $this->validate();
             for ($i = 0; $i < $this->license_quantity; $i++) {
+       
 
                 $licenseMasked = preg_replace_callback('/X+/', function ($matches) {
                     return strtoupper(bin2hex(random_bytes(strlen($matches[0]))));
