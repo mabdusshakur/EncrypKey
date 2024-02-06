@@ -24,4 +24,9 @@ class License extends Model
         'banned_at',
         'last_login_at'
     ];
+
+    public function application()
+    {
+        return $this->belongsTo(Application::class);
+    }
 }
