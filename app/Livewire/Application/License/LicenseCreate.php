@@ -48,7 +48,9 @@ class LicenseCreate extends Component
                     'expires_at' => $this->expires_at,
                     'application_id' => $this->application->id,
                 ]);
-
+                
+                $created->application->increment('license_count', 1);
+                
                 if (!$created) {
                     session()->flash('error', 'License could not be created');
                     return;
