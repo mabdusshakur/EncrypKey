@@ -45,6 +45,7 @@ class LicenseIndex extends Component
     {
         $license = License::find($id);
         if ($license) {
+            $license->application->decrement('license_count', 1);
             $license->delete();
             $this->dispatch('license-deleted');
             session()->flash('success', 'License deleted successfully');
