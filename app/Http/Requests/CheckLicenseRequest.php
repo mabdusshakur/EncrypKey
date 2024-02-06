@@ -27,6 +27,7 @@ class CheckLicenseRequest extends FormRequest
             'owner_id' => 'required|exists:users,owner_id',
             'secret' => 'required|exists:applications,secret',
             'name' => 'required|exists:applications,name',
+            'license_key' => 'required|exists:licenses,license_key',
         ];
     }
 
