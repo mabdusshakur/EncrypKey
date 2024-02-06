@@ -31,7 +31,7 @@ class CheckLicense extends Controller
                 'message' => 'Application not found'
             ], 404);
         }
-        
+
         // Check if the owner has the application
         $ownerHasApplication = $owner->applications->contains($application->id);
         if (!$ownerHasApplication) {
@@ -70,10 +70,34 @@ class CheckLicense extends Controller
             ], 403);
         }
 
-        $hwid_hash = $license->hwid_hash;
+        // Check if the license is used on another device
+        $clientHwid = $request->hwid;
+        $isUsed = $license->is_used;
+        if ($isUsed) {
+            $hwid_hash = $license->hwid_hash;
+            if ($clientHwid !== $hwid_hash) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'License is already used on another device'
+                ], 403);
+            }
+        }
+
+        // Activate the license
+        if (!$license->is_used) {
+            $license->update([
+                'is_used' => true,
+                'hwid_hash' => $clientHwid
+            ]);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'License activated successfully on this device'
+            ], 200);
+        }
         
         return response()->json([
-            $license
+            'status' => 'success',
+            'message' => 'License is valid'
         ], 200);
     }
 }
