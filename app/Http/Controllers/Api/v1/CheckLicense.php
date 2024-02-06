@@ -70,6 +70,8 @@ class CheckLicense extends Controller
             ], 403);
         }
 
+        $hwid_hash = $license->hwid_hash;
+        
         return response()->json([
             $license
         ], 200);
