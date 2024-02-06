@@ -29,6 +29,18 @@ To harness the power of EncrypKey, follow these simple steps:
 Start using EncrypKey today to fortify your software's security, streamline your license management process, and unlock new opportunities for growth.
 
 
+## Installation
+
+1. Clone the repository: `git clone https://github.com/mabdusshakur/EncrypKey.git`
+2. Install dependencies: `composer install`
+3. Set up your environment variables: Rename `.env.example` to `.env` and update the necessary values.
+4. Configure your mail server: Open the `.env` file and update the `MAIL_*` variables with your mail server configurations.
+5. Connect the database: Open the `.env` file and update the `DB_*` variables with your database connection details.
+6. Generate an application key: `php artisan key:generate`
+7. Run database migrations: `php artisan migrate`
+8. Start the development server: `php artisan serve`
+
+
 # API Reference
 
 ## Base URL
