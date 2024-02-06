@@ -43,9 +43,26 @@ class CheckLicense extends Controller
 
         // Check if the license exists
         $license = $application->licenses->where('license_key', $request->license_key)->first();
+        if (!$license) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'License not found'
+            ], 404);
+        }
+
+        // Check if the license is banned
+        $isBanned = $owner->is_banned;
+        $banReason = $owner->ban_reason;
+        if ($isBanned) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'License is banned',
+                'ban_reason' => $banReason
+            ], 403);
+        }
 
         return response()->json([
-            $license
+
         ], 200);
     }
 }
