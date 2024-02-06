@@ -51,8 +51,8 @@ class CheckLicense extends Controller
         }
 
         // Check if the license is banned
-        $isBanned = $owner->is_banned;
-        $banReason = $owner->ban_reason;
+        $isBanned = $license->is_banned;
+        $banReason = $license->ban_reason;
         if ($isBanned) {
             return response()->json([
                 'status' => 'error',
@@ -61,8 +61,17 @@ class CheckLicense extends Controller
             ], 403);
         }
 
-        return response()->json([
+        // Check if the license is expired
+        $isExpired = $license->expires_at < now();
+        if ($isExpired) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'License is expired'
+            ], 403);
+        }
 
+        return response()->json([
+            $license
         ], 200);
     }
 }
