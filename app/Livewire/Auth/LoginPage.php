@@ -14,7 +14,20 @@ class LoginPage extends Component
         'password' => 'required|min:8',
     ];
 
-    
+    private function getOldCredentials()
+    {
+        $email = Cookie::get('email');
+        $password = Cookie::get('password');
+        if ($email && $password) {
+            $this->email = $email;
+            $this->password = $password;
+        }
+    }
+    public function mount()
+    {
+        $this->getOldCredentials();
+    }
+
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
