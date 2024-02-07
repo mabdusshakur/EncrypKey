@@ -14,9 +14,21 @@ class LoginPage extends Component
         'password' => 'required|min:8',
     ];
 
+    
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
+    }
+
+    private function rememberMe()
+    {
+        if ($this->remember_me) {
+            Cookie::queue('email', $this->email, 60 * 24 * 7);
+            Cookie::queue('password', $this->password, 60 * 24 * 7);
+        } else {
+            Cookie::queue(Cookie::forget('email'));
+            Cookie::queue(Cookie::forget('password'));
+        }
     }
 
     public function login()
@@ -24,10 +36,7 @@ class LoginPage extends Component
         $this->validate();
 
         if (auth()->attempt(['email' => $this->email, 'password' => $this->password])) {
-            if ($this->remember_me) {
-                Cookie::queue('email', $this->email, 60 * 24 * 7);
-                Cookie::queue('password', $this->password, 60 * 24 * 7);
-            }
+            $this->rememberMe();
             return redirect()->route('dashboard');
         } else {
             session()->flash('error', 'Email or password is incorrect.');
