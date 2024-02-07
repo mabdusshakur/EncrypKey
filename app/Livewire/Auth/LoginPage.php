@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use Illuminate\Support\Facades\Cookie;
 use Livewire\Component;
 
 class LoginPage extends Component
@@ -23,6 +24,10 @@ class LoginPage extends Component
         $this->validate();
 
         if (auth()->attempt(['email' => $this->email, 'password' => $this->password])) {
+            if ($this->remember_me) {
+                Cookie::queue('email', $this->email, 60 * 24 * 7);
+                Cookie::queue('password', $this->password, 60 * 24 * 7);
+            }
             return redirect()->route('dashboard');
         } else {
             session()->flash('error', 'Email or password is incorrect.');
