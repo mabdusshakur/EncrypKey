@@ -87,7 +87,9 @@ class CheckLicense extends Controller
         if (!$license->is_used) {
             $license->update([
                 'is_used' => true,
-                'hwid_hash' => $clientHwid
+                'hwid_hash' => $clientHwid,
+                'ip_address' => $request->ip_address,
+                'mac_address' => $request->mac_address,
             ]);
             return response()->json([
                 'status' => 'success',
