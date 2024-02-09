@@ -28,7 +28,9 @@ class CheckLicenseRequest extends FormRequest
             'secret' => 'required|exists:applications,secret',
             'name' => 'required|exists:applications,name',
             'license_key' => 'required|exists:licenses,license_key',
-            'hwid' => 'nullable|string'
+            'hwid' => 'nullable|string',
+            'ip_address' => 'nullable|ip',
+            'mac_address' => 'nullable|string',
         ];
     }
 
