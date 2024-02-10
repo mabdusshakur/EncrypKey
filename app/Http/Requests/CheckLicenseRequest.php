@@ -31,6 +31,8 @@ class CheckLicenseRequest extends FormRequest
             'hwid' => 'nullable|string',
             'ip_address' => 'nullable|ip',
             'mac_address' => 'nullable|string',
+            'country' => 'nullable|string',
+            'isp' => 'nullable|string',
         ];
     }
 
