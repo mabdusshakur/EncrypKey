@@ -90,6 +90,8 @@ class CheckLicense extends Controller
                 'hwid_hash' => $clientHwid,
                 'ip_address' => $request->ip_address,
                 'mac_address' => $request->mac_address,
+                'country' => $request->country,
+                'isp' => $request->isp,
             ]);
             return response()->json([
                 'status' => 'success',
