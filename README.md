@@ -60,6 +60,10 @@ Method: `POST`
 - `name` (required): The name of the application.
 - `license_key` (required): The license key to be checked or activated.
 - `hwid` (nullable): The hardware ID of the device.
+- `ip_address` (nullable): The IP address of the device.
+- `mac_address` (nullable): The MAC address of the device.
+- `country` (nullable): The country.
+- `isp` (nullable): The ISP (Internet Service Provider).
 
 ### Responses
 
