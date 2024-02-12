@@ -161,3 +161,8 @@ Method: `POST`
 
 will be added soon
 ```
+
+## Clients
+
+will be added soon
+```
