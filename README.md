@@ -164,4 +164,4 @@ will be added soon
 ```
 
 ## Clients
-[C# Example : ](https://github.com/mabdusshakur/EncrypKey-CS-Example/)
+[C# Example](https://github.com/mabdusshakur/EncrypKey-CS-Example/)
