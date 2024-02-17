@@ -161,8 +161,7 @@ Method: `POST`
 
 will be added soon
 ```
+```
 
 ## Clients
-
-will be added soon
-```
+[C# Example](https://github.com/mabdusshakur/EncrypKey-CS-Example/)
