@@ -28,6 +28,7 @@ class BanLicenseRequest extends FormRequest
             'secret' => 'required|exists:applications,secret',
             'name' => 'required|exists:applications,name',
             'license_key' => 'required|exists:licenses,license_key',
+            'ban_reason' => 'nullable|string'
         ];
     }
 
