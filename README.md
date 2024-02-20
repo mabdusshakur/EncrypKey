@@ -157,6 +157,19 @@ Method: `POST`
         }
         ```
 
+## License Ban
+
+Endpoint: `/ban-license`
+
+Method: `POST`
+
+### Parameters
+
+- `owner_id` (required): The ID of the owner.
+- `secret` (required): The secret key for authentication.
+- `name` (required): The name of the application.
+- `license_key` (required): The license key to be checked or activated.
+
 ## Additional API References
 
 will be added soon
