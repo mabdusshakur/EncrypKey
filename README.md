@@ -170,11 +170,5 @@ Method: `POST`
 - `name` (required): The name of the application.
 - `license_key` (required): The license key to be checked or activated.
 
-## Additional API References
-
-will be added soon
-```
-```
-
 ## Clients
 [C# Example](https://github.com/mabdusshakur/EncrypKey-CS-Example/)
